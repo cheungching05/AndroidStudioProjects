@@ -1,0 +1,25 @@
+package com.ching.servicetest;
+
+import android.app.IntentService;
+import android.content.Intent;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+public class MyIntentService extends IntentService {
+    public MyIntentService(){
+        super("MyIntentService");//调用父类的有参构造函数
+    }
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+        //打印当前的线程的id
+        Log.d("MyIntentService","线程ID是"+Thread.currentThread().getId());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("MyIntentService","执行销毁命令");
+    }
+}
